@@ -7,7 +7,8 @@ import java.util.Set;
 
 public class BallGenerator {
 	private static final int SIZE = 3;
-	private static final int BOUND = 10;
+	private static final int MIN = 1;
+	private static final int MAX = 9;
 
 	private final Random random;
 
@@ -18,7 +19,7 @@ public class BallGenerator {
 	private Set<Integer> sample(int size) {
 		Set<Integer> numbers = new LinkedHashSet<>();
 		while (numbers.size() < size) {
-			numbers.add(random.nextInt(BOUND));
+			numbers.add(MIN + random.nextInt(MAX));
 		}
 		return numbers;
 	}
