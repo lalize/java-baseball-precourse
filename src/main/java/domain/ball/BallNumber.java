@@ -22,10 +22,6 @@ public class BallNumber {
 		}
 	}
 
-	public int get() {
-		return number;
-	}
-
 	public int compareTo(BallNumber that) {
 		if (number == that.number) {
 			return SAME;
