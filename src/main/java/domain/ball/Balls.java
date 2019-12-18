@@ -9,6 +9,7 @@ public class Balls {
 	private static final String OVERLAP_ERROR = "같은 숫자가 존재합니다.";
 	private static final String SIZE_ERROR = SIZE + "자리의 수가 아닙니다.";
 	private static final int ZERO = 0;
+	private static final int NONE = -1;
 
 	private final List<BallNumber> balls = new ArrayList<>();
 
@@ -38,6 +39,19 @@ public class Balls {
 		int count = ZERO;
 		for (int i = ZERO; i < SIZE; i++) {
 			count += balls.get(i).compareTo(that.balls.get(i));
+		}
+		return count;
+	}
+
+	private int plusOneIfIsBall(BallNumber number, int index) {
+		int findIndex = balls.indexOf(number);
+		return Boolean.compare(findIndex != index, findIndex == NONE);
+	}
+
+	public int countOfBall(Balls that) {
+		int count = ZERO;
+		for (int i = ZERO; i < SIZE; i++) {
+			count += plusOneIfIsBall(that.balls.get(i), i);
 		}
 		return count;
 	}
