@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-public class Balls{
+public class Balls {
 	private static final int SIZE = 3;
 	private static final String OVERLAP_ERROR = "같은 숫자가 존재합니다.";
 	private static final String SIZE_ERROR = SIZE + "자리의 수가 아닙니다.";
+	private static final int ZERO = 0;
 
 	private final List<BallNumber> balls = new ArrayList<>();
 
@@ -31,5 +32,13 @@ public class Balls{
 		if (numbers.size() != SIZE) {
 			throw new IllegalArgumentException(SIZE_ERROR);
 		}
+	}
+
+	public int countOfStrike(Balls that) {
+		int count = ZERO;
+		for (int i = ZERO; i < SIZE; i++) {
+			count += balls.get(i).compareTo(that.balls.get(i));
+		}
+		return count;
 	}
 }
