@@ -35,10 +35,14 @@ public class Balls {
 		}
 	}
 
+	private int plusOneIfIsStrike(BallNumber number, int index) {
+		return balls.get(index).compareTo(number);
+	}
+
 	public int countOfStrike(Balls that) {
 		int count = ZERO;
 		for (int i = ZERO; i < SIZE; i++) {
-			count += balls.get(i).compareTo(that.balls.get(i));
+			count += plusOneIfIsStrike(that.balls.get(i), i);
 		}
 		return count;
 	}
